@@ -1,24 +1,37 @@
 export interface CountryApi {
-  flags: {
-    png: string;
-    svg: string;
-  };
-  name: {
-    common: string;
-    official: string;
-    nativeName: {
-      [key: string]:
-        | {
-            official: string;
-            common: string;
-          }
-        | undefined;
-    };
-  };
+  flags: CountryApiFlags;
+  name: CountryApiName;
   capital: string[];
   region: string;
   area: number;
   population: number;
+}
+
+export interface CountryApiFlags {
+  png: string;
+  svg: string;
+}
+
+export interface CountryApiName {
+  common: string;
+  official: string;
+  nativeName: {
+    [key: string]:
+      | {
+          official: string;
+          common: string;
+        }
+      | undefined;
+  };
+}
+
+export interface CountryApiNativeName {
+  [key: string]: CountryApiLanguageName | undefined;
+}
+
+export interface CountryApiLanguageName {
+  official: string;
+  common: string;
 }
 
 export interface Country {
@@ -30,6 +43,4 @@ export interface Country {
   population: number;
 }
 
-export interface BadgeLabel {
-  label: 'area' | 'population';
-}
+export type BadgeLabel = 'area' | 'population';

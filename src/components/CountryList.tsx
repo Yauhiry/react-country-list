@@ -2,15 +2,15 @@ import React from 'react';
 import { Country } from '../types';
 import { CountryItem } from './CountryItem';
 
-interface CountryListProps {
-  countryList: Country[];
+interface CountriesProps {
+  countries: Country[];
 }
 
-export const CountryList = ({ countryList }: CountryListProps) => {
+export const CountryList = ({ countries }: CountriesProps) => {
   return (
     <ul className="list-group">
-      {countryList.map((countryItem) => (
-        <CountryItem key={countryItem.name} countryItem={countryItem} />
+      {countries.map((country) => (
+        <CountryItem key={country.name} country={country} />
       ))}
     </ul>
   );

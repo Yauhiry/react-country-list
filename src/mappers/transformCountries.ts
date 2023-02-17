@@ -1,23 +1,14 @@
 import { CountryApi, Country } from '../types';
 
 export const transformCountries = (countries: CountryApi[]): Country[] => {
-  return countries.map(
-    ({
-      flags: { svg },
-      name: { common },
-      capital: [capitalName],
-      region,
-      area,
-      population,
-    }) => {
-      return {
-        flagImage: svg,
-        name: common,
-        capital: capitalName,
-        region: region,
-        area: area,
-        population: population,
-      };
-    }
-  );
+  return countries.map(({ flags, name, capital, region, area, population }) => {
+    return {
+      flagImage: flags.svg,
+      name: name.common,
+      capital: capital[0],
+      region: region,
+      area: area,
+      population: population,
+    };
+  });
 };
